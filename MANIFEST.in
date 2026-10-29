@@ -1,0 +1,5 @@
+include LICENSE README.md
+include launch_gui.sh start_gui.bat
+recursive-include examples *.urdf *.py
+recursive-include src/urdf_dh/resources *.urdf
+recursive-include tests *.py

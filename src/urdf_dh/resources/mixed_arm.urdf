@@ -1,0 +1,56 @@
+<robot name="independent_known_dh_robot">
+  <link name="base_link" />
+  <link name="mount_link" />
+  <joint name="base_mount" type="fixed">
+    <parent link="base_link" />
+    <child link="mount_link" />
+    <origin xyz="0.10000000000000001 -0.050000000000000003 0.20000000000000001" rpy="0.14999999999999999 -0.20000000000000001 0.29999999999999999" />
+  </joint>
+  <link name="joint_frame_1" />
+  <joint name="joint_1" type="revolute">
+    <parent link="mount_link" />
+    <child link="joint_frame_1" />
+    <origin xyz="0 0 0" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1" upper="3.1" effort="10" velocity="2" />
+  </joint>
+  <link name="link_1" />
+  <joint name="body_frame_1" type="fixed">
+    <parent link="joint_frame_1" />
+    <child link="link_1" />
+    <origin xyz="0.29999999999999999 0 0.20000000000000001" rpy="1.5707963267948966 -0 0" />
+  </joint>
+  <link name="joint_frame_2" />
+  <joint name="joint_2" type="prismatic">
+    <parent link="link_1" />
+    <child link="joint_frame_2" />
+    <origin xyz="0 0 0" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.8" upper="0.8" effort="10" velocity="2" />
+  </joint>
+  <link name="link_2" />
+  <joint name="body_frame_2" type="fixed">
+    <parent link="joint_frame_2" />
+    <child link="link_2" />
+    <origin xyz="0.14700998667618623 0.02980039961925918 0.12" rpy="0 -0 0.20000000000000001" />
+  </joint>
+  <link name="joint_frame_3" />
+  <joint name="joint_3" type="continuous">
+    <parent link="link_2" />
+    <child link="joint_frame_3" />
+    <origin xyz="0 0 0" rpy="0 -0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="link_3" />
+  <joint name="body_frame_3" type="fixed">
+    <parent link="joint_frame_3" />
+    <child link="link_3" />
+    <origin xyz="0.11940049983336309 -0.011980009997619378 0.050000000000000003" rpy="-1.5707963267948966 -0 -0.099999999999999992" />
+  </joint>
+  <link name="tip_link" />
+  <joint name="tool_mount" type="fixed">
+    <parent link="link_3" />
+    <child link="tip_link" />
+    <origin xyz="0.029999999999999999 0.01 0.10000000000000001" rpy="0.20000000000000001 0.099999999999999992 -0.29999999999999999" />
+  </joint>
+</robot>
